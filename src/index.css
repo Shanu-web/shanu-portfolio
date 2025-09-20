@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: theme('colors.ink');
+    background-color: theme('colors.sand');
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    @apply bg-sand text-ink min-h-screen transition-colors duration-300 ease-out font-sans;
+    background-image: linear-gradient(180deg, rgba(252, 250, 248, 0.96), rgba(252, 250, 248, 0.88)), theme('backgroundImage.grain');
+    background-attachment: fixed;
+  }
+
+  body.dark {
+    @apply bg-mocha text-sand;
+    background-image: linear-gradient(180deg, rgba(35, 31, 28, 0.94), rgba(35, 31, 28, 0.86)), theme('backgroundImage.grain');
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-coffee px-6 py-2 text-sm font-semibold text-sand shadow-soft transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-terracotta;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-coffee/40 px-6 py-2 text-sm font-semibold text-coffee transition-all duration-200 hover:-translate-y-1 hover:border-coffee hover:text-ink dark:border-latte/40 dark:text-latte dark:hover:text-sand;
+  }
+}
