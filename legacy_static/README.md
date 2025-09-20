@@ -1,0 +1,1 @@
+Open index.html (VS Code Live Server). Toggle ☀︎/☾ and EN/हिं. Deploy via GitHub Pages.
