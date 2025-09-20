@@ -13,6 +13,35 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <title>Shanu Choudhary • AI & Integration Engineer</title>
+    <script type="module">
+      const storageKey = 'ghspa-redirect';
+      let redirect;
+      try {
+        redirect = sessionStorage.getItem(storageKey);
+      } catch (error) {
+        redirect = null;
+      }
+
+      if (redirect) {
+        try {
+          sessionStorage.removeItem(storageKey);
+        } catch (error) {
+          // Ignore removal failures
+        }
+
+        try {
+          const parsed = JSON.parse(redirect);
+          const base = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '');
+          const path = (parsed.path || '/').replace(/^\//, '');
+          const normalized = `${base}/${path}`.replace(/\/{2,}/g, '/');
+          const search = parsed.search || '';
+          const hash = parsed.hash || '';
+          window.history.replaceState(null, '', `${normalized}${search}${hash}`);
+        } catch (error) {
+          // Ignore malformed redirects
+        }
+      }
+    </script>
   </head>
   <body class="bg-sand text-ink antialiased">
     <div id="root"></div>
