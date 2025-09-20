@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      (function persistSpaRedirect() {
+        var base = '/shanu-portfolio';
+        var normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base;
+        var location = window.location;
+        var path = location.pathname;
+
+        if (!path.startsWith(normalizedBase)) {
+          location.replace(normalizedBase + '/');
+          return;
+        }
+
+        var redirectPayload = {
+          path: path.slice(normalizedBase.length),
+          search: location.search,
+          hash: location.hash,
+        };
+
+        try {
+          sessionStorage.setItem('ghspa-redirect', JSON.stringify(redirectPayload));
+        } catch (error) {
+          // Ignore storage failures (e.g., private browsing)
+        }
+
+        location.replace(normalizedBase + '/');
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p>Page not found. Please return to the <a href="/shanu-portfolio/">home page</a>.</p>
+    </noscript>
+  </body>
+</html>
