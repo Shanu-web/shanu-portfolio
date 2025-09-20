@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <LocaleProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/shanu-portfolio">
           <App />
         </BrowserRouter>
       </LocaleProvider>
